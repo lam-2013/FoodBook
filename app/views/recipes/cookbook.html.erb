@@ -1,0 +1,26 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication    %>
+<% provide :title, 'Ricettario' %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span6">
+      <h1>Il mio ricettario</h1>
+    </div>
+
+    <div class="span6">
+
+      <%= link_to 'Crea una nuova ricetta', new_recipe_path, class: 'btn btn-xxlarge btn-warning' %>
+      <%= link_to 'Cerca nel ricettario', new_search_path, class: 'btn btn-xxlarge btn btn-warning' %>
+
+    </div>
+
+
+  </div>
+  <%# visualizzo tutte le mie ricette%>
+  <div class="row-fluid">
+
+    <%= render @recipes %>
+
+
+  </div>
+</div>

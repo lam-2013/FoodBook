@@ -1,0 +1,75 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, 'Registrazione' %>
+<html>
+<head>
+  <style type="text/css">
+      #div1 {
+          width: 150px;
+          height: 150px;
+          border: 2px solid #0e1574;
+      }
+
+  </style>
+  <script type="text/javascript">
+
+      function allowDrop(ev) {
+          ev.preventDefault();
+      }
+
+      function drag(ev) {
+          ev.dataTransfer.setData("Text", ev.target.id);
+      }
+
+      function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("Text");
+          ev.target.appendChild(document.getElementById(data));
+          document.getElementById("submit").disabled = false;
+
+      }
+
+  </script>
+</head>
+</body>
+<h1 class="h1center">Registrazione</h1>
+
+<div class="row">
+  <div class="span4 offset4">
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label "Nome" %>
+        <%= f.text_field :name %>
+
+        <%= f.label :surname, "Cognome" %>
+        <%= f.text_field :surname %>
+
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, 'Ripeti password' %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.submit 'Registrati', id: 'submit', disabled: true, class: 'btn btn-large btn-warning' %>
+
+    <% end %>
+
+    <p>Sposta l'immagine nel rettangolo per poterti registrare</p>
+
+    <div class="span5">
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="span5">
+      <img id="drag1" src="http://www.clker.com/cliparts/Q/N/w/B/S/8/fork-and-knife-light-blue-hi.png" draggable="true" ondragstart="drag(event)" width="150" height="150">
+
+    </div>
+
+
+    </body>
+  </div>
+</div>
+</html>

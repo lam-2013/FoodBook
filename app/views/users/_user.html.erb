@@ -1,0 +1,8 @@
+<li>
+  <%=link_to gravatar_for(user, size: 70), user%>
+  <%= link_to user.name, user %>
+  <% if current_user.admin? && !current_user?(user) %>
+      <% # since browsers cannot send DELETE request, Rails fakes them with javascript...  %>
+      | <%= link_to 'Cancella', user, method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
+</li>

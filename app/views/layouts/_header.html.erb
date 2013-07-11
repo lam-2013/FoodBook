@@ -1,0 +1,29 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+        <ul class="nav pull-right">
+          <% #link_to is the Rails helper to create links (it generates <a...> tags)  %>
+          <% if signed_in? %>
+
+
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Benvenuto <%= current_user.name %>
+                  <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
+                  <li><%= link_to "Profilo", current_user %></li>
+                  <li><%= link_to "Modifica profilo", edit_user_path(current_user) %></li>
+                  <li class="divider"></li>
+
+                  <li><%= link_to "Esci", signout_path, method: "delete" %></li>
+                </ul>
+              </li>
+          <% else %>
+              <br>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

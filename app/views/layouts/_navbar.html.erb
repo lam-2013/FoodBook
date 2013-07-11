@@ -1,0 +1,12 @@
+<%# navbar di navigazione interna al sito con link alle sezioni principali%>
+<ul class="nav nav-pills">
+
+  <li class="<%= 'active' if current_page?(root_path) %>"><%=link_to root_path  do %> <i class="icon-home"></i> <%= t(:Home).html_safe %><% end %>  </li>
+  <li class="<%= 'active' if current_page?(homerecipes_path) %>"><%=link_to homerecipes_path do %> <i class="icon-book"></i> <%= t(:Ricette).html_safe %><% end %>  </li>
+  <li class="<%= 'active' if current_page?(cookbook_path) %>"><%=link_to homerecipes_path do %> <i class="icon-calendar"></i> <%= t(:Menù).html_safe %><% end %>  </li>
+  <li class="<%= 'active' if current_page?(followers_user_path(current_user)) %>"><%=link_to followers_user_path(current_user) do %> <i class="icon-star"></i> <%= t(:Followers).html_safe %><% end %>  </li>
+  <li class="<%= 'active' if current_page?(current_user) %>"><%= link_to current_user do %> <i class="icon-user"></i> <%= t(:Profilo).html_safe %><% end %>  </li>
+  <li class="<%= 'active' if current_page?(faq_path) %>"><%= link_to faq_path do %> <i class="icon-info-sign"></i> <%= t(:Info).html_safe %><% end %>  </li>
+</ul>
+
+

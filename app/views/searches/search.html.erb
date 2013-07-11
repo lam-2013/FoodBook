@@ -1,0 +1,10 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, 'Risultati ricerca' %>
+
+<h1>Risultati trovati</h1>
+
+<!--Pagina di visualizzazione di tutte le ricette cercate tramite ricerca per nome-->
+<ul class="recipes">
+  <%= render @recipes %>
+</ul>
+

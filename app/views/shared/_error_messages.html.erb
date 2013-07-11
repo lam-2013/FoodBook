@@ -1,0 +1,14 @@
+<% # gestisce e mostra gli errori del form  %>
+<% if object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(object.errors.count, 'error') %>
+        . <%# se c'è un solo errore lo mette al singolare altrimenti mette la parola errore al plurale%>
+      </div>
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+            <li>* <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

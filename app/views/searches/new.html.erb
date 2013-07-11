@@ -1,0 +1,42 @@
+<% provide :title, 'Ricerca avanzata' %>
+
+<h1 class="h1center">Ricerca avanzata </h1>
+<!--Form per la ricerca avanzata delle ricette-->
+<div class="row-fluid">
+  <div class="span4 offset4">
+
+    <%= form_for @search do |f| %>
+        <div class="field">
+          <%= f.label :name, "Nome ricetta" %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"Tipo di piatto" %>
+          <%= f.select :piatto, ['Antipasto', 'Primo', 'Secondo', 'Dolce', 'Altro'], :id => "p", :prompt => 'Seleziona un piatto' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"Tipo di cucina" %>
+          <%= f.select :cucina, ['Araba', 'Cinese', 'Italiana', 'Messicana', 'Altro'], :id => "c", :prompt => 'Seleziona una cucina' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :vegana %>
+          <%= f.check_box :vegetariana %>
+
+          <%= f.label :vegetariana %>
+          <%= f.check_box :vegetariana %>
+
+          <%= f.label :latticini %>
+          <%= f.check_box :latticini %>
+
+          <%= f.label :glutine %>
+          <%= f.check_box :glutine %>
+        </div>
+
+        <div class="actions"><%= f.submit "Search", class: 'btn btn-large btn-warning' %></div>
+    <% end %>
+
+  </div>
+</div>

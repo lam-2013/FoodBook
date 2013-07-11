@@ -1,0 +1,33 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'Home' %>
+
+<% if signed_in? %>
+
+  <div class="row-fluid">
+    <aside class="span4">
+
+        <%# render 'shared/user_info' %>
+
+
+        <%# render 'shared/stats' %>
+
+    </aside>
+    <div class="span8">
+      <%# render 'shared/post_form' %>
+      <h3>Wall</h3>
+      <%# render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+    <div class="center hero-unit">
+      <h1>Benvenuto su FoodBook</h1>
+      <%=link_to "Login", signin_path, class: 'btn btn-large btn-primary' %>
+      <%= link_to 'Registrati', signup_path, class: 'btn btn-large btn-primary' %>
+      <%=link_to "Info", faq_path, class: 'btn btn-large btn-primary' %>
+
+      <h2>
+        Accedi o registrati per iniziare a usare FoodBook
+      </h2>
+
+    </div>
+<% end %>

@@ -1,0 +1,72 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, 'Home' %>
+
+<% if signed_in? %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+
+
+        <div class="span4">
+
+          <h3>Ricetta del giorno</h3>
+          <%= link_to image_tag("capa.jpg"), recipe_path(@recipes_day) %>
+          <h4>
+            <%= link_to @recipes_day.name, recipe_path(@recipes_day) %> </p>
+          </h4>
+
+
+        </div>
+
+        <div class="span4 offset2">
+
+          <h3>Cuoco del giorno</h3>
+
+          <div class="row-fluid">
+            <div class="span12">
+              <%= link_to gravatar_for(@user, size: 300), user_path(@user.id) %> </br>
+            </div>
+            <div class="span12">
+              <div class="row-fluid">
+                <h5>Nome: <%= link_to @user.name, user_path(@user.id) %></h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span12">
+          <h3>Menù consigliato</h3>
+
+          <div class="span10">
+            <%= image_tag("menu.png") %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span12">
+          <h3>Menù del giorno</h3>
+
+          <div class="span10">
+            <%= image_tag("menu.png") %>
+          </div>
+        </div>
+      </div>
+
+
+
+<% else %>
+    <%= render 'layouts/carousel' %>
+
+    <br><br>
+    <div class="login">
+      <%= link_to 'LOGIN', signin_path, class: 'btn btn-xlarge btn-warning' %>
+      <%= link_to 'REGISTRAZIONE', signup_path, class: 'btn btn-xlarge btn-warning' %>
+      <%= link_to 'INFO', faq_path, class: 'btn btn-xlarge btn-warning' %>
+
+    </div>
+
+    </div>
+<% end %>

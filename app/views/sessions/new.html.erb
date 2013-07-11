@@ -1,0 +1,21 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, 'Login' %>
+
+<h1 class="h1center">Login</h1>
+
+<div class="row">
+  <div class="span3 offset5">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.submit 'Accedi', class: 'btn btn-large btn-warning' %>
+    <% end %>
+
+    <p>Nuovo utente? <%= link_to 'Registrati!', signup_path %></p>
+  </div>
+</div>

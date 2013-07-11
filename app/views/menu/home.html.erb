@@ -1,0 +1,21 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'Home' %>
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <a href="#" class="btn btn-xlarge btn-warning disabled">Crea menù</a>
+    <a href="#" class="btn btn-xlarge btn-warning disabled">Cerca menù</a>
+    <a href="#" class="btn btn-xlarge btn-warning disabled">I miei menù</a>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <h3>Menù del giorno</h3>
+
+        <div class="span10">
+          <%= image_tag("menu.png") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

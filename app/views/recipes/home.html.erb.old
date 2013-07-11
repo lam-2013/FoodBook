@@ -1,0 +1,53 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication %>
+<% provide :title, 'Home ricette' %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span6"><h3>Ricettario</h3>
+      <%= link_to cookbook_path do %> <%= t(:"Vai al tuo ricettario").html_safe %>
+      <% end %>
+    </div>
+
+    <div class="span6"><h3>Ricerca ricetta</h3>
+
+      <div class="row-fluid">
+        <% #ricerca ricetta per nome %>
+        <%= render 'searches/search' %>
+      </div>
+      <div class="row-fluid">
+        <% #ricerca ricetta avanzata tramite più campi %>
+        <%= link_to "Ricerca avanzata", new_search_path %>
+      </div>
+
+    </div>
+
+
+    <div class="row-fluid">
+      <div class="span6"><h3>Ricette consigliate</h3> </div>
+
+      <div class="span6"><h3>Ricette del giorno</h3></div>
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12"><h3>Ricette recenti</h3></div>
+
+           <div id="recipes">
+            <%= render @recipes_all %>
+           </div>
+          <% # since we are in a Users view, we need to specify that the pagination is for the posts %>
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+

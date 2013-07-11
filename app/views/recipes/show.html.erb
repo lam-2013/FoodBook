@@ -1,0 +1,50 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication    %>
+<% provide :title, @recipe.name %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <h1><%= @recipe.name %></h1>
+
+    </div>
+
+
+      <div class="row-fluid">
+        <div class="span6">
+            <%= link_to image_tag("salmone.jpg") %>
+        </div>
+
+        <div class="span6">
+           <br>   <br>    <br>
+              <p>
+              <td><b>Tipo di piatto:</b> <%= @recipe.piatto %></td> <br>
+              <td><b>Tipo di cucina:</b> <%= @recipe.cucina %></td> <br>
+              <td><b>Vegana:</b> <%= check_box_tag 'user', 'is_admin', @recipe.vegana, :disabled => true %> </td> <br>
+              <td><b>Vegetariana:</b> <%= check_box_tag 'user', 'is_admin', @recipe.vegetariana, :disabled => true %> </td>  <br>
+              <td><b>Glutine:</b> <%= check_box_tag 'user', 'is_admin', @recipe.glutine, :disabled => true %> </td> <br>
+              <td><b>Latticini:</b> <%= check_box_tag 'user', 'is_admin', @recipe.latticini, :disabled => true %> </td>  <br>
+              <td><b>Ingredienti:</b> <br>
+                <% i=0
+                 while i<@ingredient.size %>
+                    <li><%= @ingredient[i].ingrediente %>
+                    <td><%= @ingredient[i].quantit %></td>
+                    <td><%= @ingredient[i].tipoquantit %></td> </li><br>
+                 <% i+=1
+                    end%> </td>
+              <td><b>Descrizione:</b> <%= @recipe.descrizione %></td> <br>
+              </p>
+
+              <% if current_user?(@recipe.user) %>
+                  <%#se la ricetta è dell'utente loggato allora potrà anche modificare o cancellare la sua ricetta%>
+                  <%= link_to "Modifica ricetta", edit_recipe_path(@recipe.id), class: 'btn btn-warning' %>
+                  <%= link_to 'Cancella', @recipe, method: :delete, data: {confirm: 'Sei sicuro?'}, title: @recipe, class: 'btn btn-warning' %>
+
+              <% else %>
+                  <%# permette di aggiungere la ricetta al ricettario se la ricetta è di un altro. Una volta aggiunta al mio ricettario potrò modificarla e le modifiche verranno apportare solo alla mia 'copia' della ricetta non a quella originale%>
+                  <%= link_to "Aggiungi al ricettario", recipe_add_path(@recipe.id), class: 'btn btn-warning' %>
+
+              <% end %>
+        </div>
+      </div>
+  </div>
+</div>

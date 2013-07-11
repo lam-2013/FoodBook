@@ -1,0 +1,12 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, 'Messages' %>
+
+<h1>Messaggi ricevuti</h1>
+
+<%= will_paginate @messages %>
+
+<ul class="messages">
+  <%= render @messages %>
+</ul>
+
+<%= will_paginate @messages %>

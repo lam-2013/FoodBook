@@ -1,0 +1,25 @@
+<% # we are going to use this partial in the home and in the user profile;
+   # in the home @user is nil and needs to be filled  %>
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <span class="badge badge-important" style="background-color: #ea0b0b"><%= @user.followed_users.count %>
+        </br>
+        following
+    </span> </strong></a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+       <span class="badge badge-important" style="background-color: #f52626"><%= @user.followers.count %>
+         </br>
+         followers
+    </span> </strong></a>
+  <% if current_user?(@user) %>
+      <a href="<%= messages_user_path(@user) %>">
+        <strong id="unread_messages" class="stat">
+        <span class="badge badge-important" style="background-color: #f74c4c"><%= @user.unread_message_count %>
+          </br>
+          messaggi
+    </span> </strong></a>
+  <% end %>
+</div>

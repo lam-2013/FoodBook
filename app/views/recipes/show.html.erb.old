@@ -1,0 +1,29 @@
+<% #Provide the page title in a symbol to application.html.erb to avoid duplication  %>
+<% provide :title, @recipe.name %>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Visualizzazione ricetta </h1>
+        </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span6 offset3">
+
+    <tr>
+
+      <td>Nome ricetta: <%= @recipe.name %></td>
+      <td>Tipo di piatto: <%=  @recipe.piatto%></td>
+      <td>Tipo di cucina: <%= @recipe.cucina %></td>
+      <td>Vegana: <%= check_box_tag 'user', 'is_admin', @recipe.vegana, :disabled => true %> </td>
+      <td>Vegetariana: <%= check_box_tag 'user', 'is_admin', @recipe.vegetariana, :disabled => true %> </td>
+      <td>Glutine: <%= check_box_tag 'user', 'is_admin', @recipe.glutine, :disabled => true %> </td>
+      <td>Latticini: <%= check_box_tag 'user', 'is_admin', @recipe.latticini, :disabled => true %> </td>
+      <td><%= @recipe.descrizione %></td>
+
+    </tr>
+      <%= link_to "modifica ricetta", edit_recipe_path(@recipe.id) %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <% # method to automatically prevent Cross-Site Request Forgery    %>
+  <%= csrf_meta_tags %>
+  <% # partial for the HTML shim    %>
+  <%= render 'layouts/shim' %>
+
+</head>
+
+
+<body>
+
+<% # partial for the header    %>
+<%= render 'layouts/header' %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <% #contiene la sidebar   %>
+
+    <% if signed_in? %>
+        <%= render 'layouts/sidebar' %>
+    <% end %>
+
+    <div class="span10">
+      <% # the flash message; it supports different type of communications    %>
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+      <%= yield %>
+      <% if signed_in? %>
+          <% # partial for the footer    %>
+          <%= render 'layouts/footer' %>
+      <% end %>
+      <% # show debug info if development is the actve Rails env    %>
+      <%# debug(params) if Rails.env.development? %><%#codice che mostra le informazioni di debug  se sono nel development     %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

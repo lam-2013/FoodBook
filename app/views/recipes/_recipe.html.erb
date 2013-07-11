@@ -1,0 +1,26 @@
+<%# partial per visualizzare elenco di ricette attraverso thumbnails %>
+
+<ul class="thumbnails">
+  <li class="span4 clearfix">
+    <div class="thumbnail clearfix">
+      <%= link_to image_tag("pasta2.jpg"), recipe_path(recipe) %>
+
+      <div class="caption" class="pull-left">
+        <h4>
+          <%= link_to recipe.name, recipe_path(recipe) %>
+        </h4>
+      </div>
+    </div>
+  </li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
